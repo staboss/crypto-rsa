@@ -1,7 +1,7 @@
 # Pure Kotlin implementation of RSA-cryptosystem
 **RSA (Rivest–Shamir–Adleman)** is one of the first public-key cryptosystems and is widely used for secure data transmission. 
 In such a cryptosystem, the encryption key is public and distinct from the decryption key which is kept secret (private). 
-In RSA, this asymmetry is based on the practical difficulty of factoring the product of two large prime numbers, the "factoring problem".
+In RSA, this asymmetry is based on the practical difficulty of factoring the product of two large prime numbers.
 
 See [wikipedia](https://en.wikipedia.org/wiki/RSA_(cryptosystem) for more information.
 
@@ -50,7 +50,7 @@ You can find detailed examples [here](https://github.com/staboss/crypto-rsa/tree
 - Man-in-the-middle attack
 - Low public exponent attack
 
-Try to hack with `rsa-attack.jar` in [lib](https://github.com/staboss/crypto-rsa/tree/master/lib) directory :)
+Try to hack with `rsa-attack.jar` in the [lib](https://github.com/staboss/crypto-rsa/tree/master/lib) directory :)
 ### Simple usage
 
     ➜  lib: java -jar rsa-attack.jar [MESSAGE]
