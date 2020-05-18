@@ -3,7 +3,7 @@
 In such a cryptosystem, the encryption key is public and distinct from the decryption key which is kept secret (private). 
 In RSA, this asymmetry is based on the practical difficulty of factoring the product of two large prime numbers.
 
-See [wikipedia](https://en.wikipedia.org/wiki/RSA_(cryptosystem) for more information.
+See [wikipedia](https://ru.wikipedia.org/wiki/RSA) for more information.
 
 ## Requirements
 - [JAVA 8+](https://www.java.com/en/download/)
