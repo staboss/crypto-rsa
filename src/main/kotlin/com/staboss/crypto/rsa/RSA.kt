@@ -14,27 +14,18 @@ import java.math.BigInteger
  *
  * @property keyPair PUBLIC & PRIVATE KEYS
  */
-class RSA {
+class RSA(var keyPair: KeyPair) {
 
-    var keyPair: KeyPair
+    constructor() : this(rsaTool.generateKeyPair())
 
-    constructor() {
-        keyPair = rsaTool.generateKeyPair()
-    }
+    constructor(p: BigInteger, q: BigInteger)
+            : this(generateKeys(p, q))
 
-    constructor(keyPair: KeyPair) {
-        this.keyPair = keyPair
-    }
-
-    constructor(p: BigInteger, q: BigInteger) {
-        keyPair = generateKeys(p, q)
-    }
-
-    constructor(modulus: BigInteger, publicKey: BigInteger, privateKey: BigInteger) {
-        keyPair = KeyPair(RSAPublicKey(modulus, publicKey), RSAPrivateKey(modulus, privateKey))
-    }
+    constructor(modulus: BigInteger, publicKey: BigInteger, privateKey: BigInteger)
+            : this(KeyPair(RSAPublicKey(modulus, publicKey), RSAPrivateKey(modulus, privateKey)))
 
     companion object {
+
         /**
          * Algorithm for creating PUBLIC & PRIVATE KEYS
          *
@@ -60,7 +51,9 @@ class RSA {
 
             // the number 'd' number must satisfy the comparison: d * e ≡ 1 mod φ(n)
             val modED = (e * d) % phi
-            if (modED != BigInteger.ONE) error("Invalid KeyPair: e * d mod φ(n) = $modED")
+            if (modED != BigInteger.ONE) {
+                error("Invalid KeyPair: e * d mod φ(n) = $modED")
+            }
 
             val publicKey = RSAPublicKey(n, e)
             val privateKey = RSAPrivateKey(n, d)

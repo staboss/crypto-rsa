@@ -10,7 +10,7 @@ import java.io.File;
 
 public final class Parser {
 
-    @Option(name = "-g", usage = "generate", forbids = {"-d", "-e", "-s", "-r", "-k"})
+    @Option(name = "-g", usage = "generate key pair", forbids = {"-d", "-e"})
     public boolean generate = false;
 
     @Option(name = "-e", usage = "encrypt message", forbids = {"-d", "-g"})
@@ -66,11 +66,12 @@ public final class Parser {
     }
 
     public static void usage() {
-        System.err.println("usage: java -jar crypto-rsa.jar -e|-d -s FILE [-r FILE] -k KEY\n");
+        System.err.println("usage: java -jar crypto-rsa.jar [-g] -e|-d -s FILE [-r FILE] -k KEY\n");
         System.err.println(arguments);
     }
 
     private static final String arguments = "optional arguments:\n" +
+            "  -g         : generate key pair\n" +
             "  -d         : decrypt message\n" +
             "  -e         : encrypt message\n" +
             "  -k KEY     : secret key file\n" +

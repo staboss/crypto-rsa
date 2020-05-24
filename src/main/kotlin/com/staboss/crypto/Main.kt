@@ -41,13 +41,13 @@ fun main(args: Array<String>) {
 
     with(parser) {
         if (resultFilePath.isNullOrEmpty()) {
-            val file = File(sourceFilePath)
-            resultFilePath = file.absolutePath.substring(0, file.absolutePath.lastIndexOf('/')) + "/new_${file.name}"
+            File(sourceFilePath).apply {
+                resultFilePath = absolutePath.substring(0, absolutePath.lastIndexOf('/')) + "/new_${name}"
+            }
         }
-
-        val resultFile = File(resultFilePath)
-        resultFile.writeText(result)
-
-        println("The result was successfully saved to: \"${resultFile.absolutePath}\"")
+        File(resultFilePath).apply {
+            writeText(result)
+            println("The result was successfully saved to: \"${absolutePath}\"")
+        }
     }
 }
